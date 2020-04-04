@@ -1,0 +1,23 @@
+diff --git a/script/compile b/script/compile
+index 3d1562a..f86dcdd 100755
+--- a/script/compile
++++ b/script/compile
+@@ -11,7 +11,6 @@ if [ -z "$GRAALVM_HOME" ]; then
+     exit 1
+ fi
+ 
+-$GRAALVM_HOME/bin/gu install native-image
+ 
+ BABASHKA_VERSION=$(cat resources/BABASHKA_VERSION)
+ 
+@@ -20,8 +19,8 @@ export JAVA_HOME=$GRAALVM_HOME
+ $GRAALVM_HOME/bin/javac -cp $GRAALVM_HOME/jre/lib/svm/builder/svm.jar resources/CutOffCoreServicesDependencies.java
+ 
+ if [ -z "$BABASHKA_JAR" ]; then
+-   lein with-profiles +reflection do run
+-   lein do clean, uberjar
++   lein -o with-profiles +reflection do run
++   lein -o do clean, uberjar
+   BABASHKA_JAR=${BABASHKA_JAR:-"target/babashka-$BABASHKA_VERSION-standalone.jar"}
+ fi
+ 
