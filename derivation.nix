@@ -1,14 +1,14 @@
 {stdenv, callPackage, strace, buildMaven, curl, maven, fetchFromGitHub, leiningen, graalvm8, ... }:
 stdenv.mkDerivation rec {
   name = "babashka-${version}";
-  version = "2020-04-05";
+  version = "2020-04-06";
 
   src = fetchFromGitHub {
     fetchSubmodules = true;
     owner = "borkdude";
     repo = "babashka";
-    rev = "847f872df8b2d69888a5ccc6d0a791b742d3a284";
-    sha256 = "0c5jib96v062w8rakf7ik5pchsc2ankf14bl8kxcss55y4c8kwxv";
+    rev = "b522531e79cccb75f9d083c61f99af2965f1362d";
+    sha256 = "0ly6janp0a7yabxcfwpzvj8p3vhypffzwkl8jndspb2d1s56v1g9";
   };
 
   pom = callPackage ./create-pom.nix { inherit src leiningen stdenv; };
